@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SaisiR</title>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("QNjx8o9ds5xcFznRM"); // Replace with your public key api
+        })();
+    </script>
+
     <style>
         /* General Styles */
         body, html {
@@ -161,7 +168,7 @@
         Sign up to stay informed about our progress!</p> <!-- Change the description text here -->
 
         <!-- Email Form -->
-        <form id="emailForm" action="https://formsubmit.co/cla.bigoni@gmail.com" method="POST"> <!-- Replace with your email -->
+        <form id="emailForm">
             <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
             <button type="submit">Keep Me Informed</button>
         </form>
@@ -174,6 +181,37 @@
         <div class="contact-info">
             <p>Questions? Reach us at <a href="mailto:info@saisir.ch">info@saisir.ch</a></p> <!-- Replace with your email -->
         </div>
+
+        <script>
+            document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var email = document.getElementById('emailInput').value;
+                var googleSheetUrl = "https://docs.google.com/spreadsheets/d/1W0EV9uTmEPCCkS4IfeCmlHmNcf6Sxihl_ySJz8dWlCA/edit?gid=0#gid=0"; // Google Apps Script URL
+
+                // Save to Google Sheets
+                fetch(googleSheetUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Send confirmation email with EmailJS
+                        emailjs.send("service_zz959fm", "template_0iua97w", { email: email })
+                            .then(function(response) {
+                                document.getElementById('confirmation-message').style.display = 'block';
+                                document.getElementById('emailInput').value = ''; // Clear input field
+                            }, function(error) {
+                                console.error("Failed to send email confirmation:", error);
+                            });
+                    }
+                })
+                .catch(error => console.error('Error saving to Google Sheets:', error));
+            });
+        </script>
 
         <!-- Social Media Links -->
         <div class="social-links">
