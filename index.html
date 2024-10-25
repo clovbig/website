@@ -187,7 +187,7 @@
                 event.preventDefault();
 
                 var email = document.getElementById('emailInput').value;
-                var googleSheetUrl = "https://script.google.com/macros/s/AKfycbxD1h9KIZpN62f0mpKx2KrArkEvHv1FfZrkTku2-87Oaa7DF2Sx4JK8HunAk9GRwYIM/exec"; // Google Apps Script URL
+                var googleSheetUrl = "https://script.google.com/macros/s/AKfycbyWDwN6QYz3bxtOmnUkogsVfqqHxJ-bkBHbDIP_T-wD1a2PoWatZLfzdxaKCbIpc7Zc/exec"; // Google Apps Script URL
 
                 // Save to Google Sheets
                 fetch(googleSheetUrl, {
@@ -200,13 +200,13 @@
                 .then(response => {
                     if (response.ok) {
                         // Send confirmation email with EmailJS
-                        emailjs.send("service_zz959fm", "template_0iua97w", { email: email })
-                            .then(function(response) {
-                                document.getElementById('confirmation-message').style.display = 'block';
-                                document.getElementById('emailInput').value = ''; // Clear input field
-                            }, function(error) {
-                                console.error("Failed to send email confirmation:", error);
-                            });
+                        // emailjs.send("service_zz959fm", "template_0iua97w", { email: email })
+                         //    .then(function(response) {
+                                 document.getElementById('confirmation-message').style.display = 'block';
+                                 document.getElementById('emailInput').value = ''; // Clear input field
+                             //}, function(error) {
+                              //   console.error("Failed to send email confirmation:", error);
+                           // });
                     }
                 })
                 .catch(error => console.error('Error saving to Google Sheets:', error));
