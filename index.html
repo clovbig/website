@@ -168,7 +168,7 @@
         Sign up to stay informed about our progress!</p> <!-- Change the description text here -->
 
         <!-- Email Form -->
-        <form id="emailForm">
+        <form id="emailForm" method="POST">
             <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
             <button type="submit">Keep Me Informed</button>
         </form>
@@ -187,7 +187,7 @@
                 event.preventDefault();
 
                 var email = document.getElementById('emailInput').value;
-                var googleSheetUrl = "https://script.google.com/macros/s/AKfycbyWDwN6QYz3bxtOmnUkogsVfqqHxJ-bkBHbDIP_T-wD1a2PoWatZLfzdxaKCbIpc7Zc/exec"; // Google Apps Script URL
+                var googleSheetUrl = "https://script.google.com/macros/s/AKfycbytrwP3otP1c5y7nbHthG1GGg2LCWXZlo7iqluUEL2UzB34jJj9eZnAI0HVxtQcwWyW/exec"; // Google Apps Script URL
 
                 console.log("Attempting to save to Google Sheets...");
 
