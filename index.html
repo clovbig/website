@@ -168,7 +168,9 @@
         Sign up to stay informed about our progress!</p> <!-- Change the description text here -->
 
         <!-- Email Form -->
-        <form id="emailForm" method="POST">
+        <form id="emailForm" 
+            method="POST"
+            action="https://script.google.com/macros/s/AKfycbzgjcG7EET_P-LwdWqiaMDMCzR4c6jMx_PCr4K8LV8KXwIqVFJ6fqvav5p-Z9lnQj9y/exec>"
             <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
             <button type="submit">Keep Me Informed</button>
         </form>
@@ -183,43 +185,43 @@
         </div>
 
         <script>
-            document.getElementById('emailForm').addEventListener('submit', function(event) {
-                event.preventDefault();
+         //    document.getElementById('emailForm').addEventListener('submit', function(event) {
+            //     event.preventDefault();
+ //
+    //             var email = document.getElementById('emailInput').value;
+       //          var googleSheetUrl = "https://script.google.com/macros/s/AKfycbzgjcG7EET_P-LwdWqiaMDMCzR4c6jMx_PCr4K8LV8KXwIqVFJ6fqvav5p-Z9lnQj9y/exec"; // Google Apps Script URL
+ //
+    //             console.log("Attempting to save to Google Sheets...");
+ //
+    //             // Save to Google Sheets
+       //          fetch(googleSheetUrl, {
+          //           method: 'POST',
+             //        headers: {
+                //         'Content-Type': 'application/json'
+                   //  },
+                   //  body: JSON.stringify({ email: email })
+                 //})
+                 //.then(response => {
+                   //  console.log("Response from Google Sheets:", response);
 
-                var email = document.getElementById('emailInput').value;
-                var googleSheetUrl = "https://script.google.com/macros/s/AKfycbytrwP3otP1c5y7nbHthG1GGg2LCWXZlo7iqluUEL2UzB34jJj9eZnAI0HVxtQcwWyW/exec"; // Google Apps Script URL
-
-                console.log("Attempting to save to Google Sheets...");
-
-                // Save to Google Sheets
-                fetch(googleSheetUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email })
-                })
-                .then(response => {
-                    console.log("Response from Google Sheets:", response);
-
-                    if (response.ok) {
+     //                if (response.ok) {
                         // Send confirmation email with EmailJS
                         // emailjs.send("service_zz959fm", "template_0iua97w", { email: email })
                          //    .then(function(response) {
-                                console.log("Successfully saved to Google Sheets.");
+     //                            console.log("Successfully saved to Google Sheets.");
 
-                                document.getElementById('confirmation-message').style.display = 'block';
-                                document.getElementById('emailInput').value = ''; // Clear input field
+        //                         document.getElementById('confirmation-message').style.display = 'block';
+           //                      document.getElementById('emailInput').value = ''; // Clear input field
                              //}, function(error) {
                               //   console.error("Failed to send email confirmation:", error);
                            // });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error saving to Google Sheets:', error));
-                     document.getElementById('error-message').style.display = 'block';
-            });
-        </script>
+              //       }
+              //   })
+                // .catch(error => {
+                  //   console.error('Error saving to Google Sheets:', error));
+                   //   document.getElementById('error-message').style.display = 'block';
+             //});
+         </script>
 
         <!-- Social Media Links -->
         <div class="social-links">
@@ -230,3 +232,4 @@
     </div>
 </body>
 </html>
+ //
